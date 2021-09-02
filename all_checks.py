@@ -10,7 +10,7 @@ def check_reboot():
     return os.path.exists("/run/reboot/-required")
 
 def check_disk_full(disk, min_gb, min_percent):
-    """Returns True if there isn't enough disk space, false otherwise."""
+    """Returns True if there isn't enough disk space, False otherwise."""
     du = shutil.disk_usage(disk)
     #calculate the percentage of free space
     percent_free = 100 * du.free / du.total
@@ -21,11 +21,11 @@ def check_disk_full(disk, min_gb, min_percent):
     return false
 
 def check_root_full():
-    """Returns True if the root partition is full, false otherwise"""
+    """Returns True if the root partition is full, False otherwise"""
     return check_disk_full(disk+"/", min_gb=2, min_percent=10)
 
 def check_no_network():
-    """Returns treu if it fails to resolve google's URL, False otherwise"""
+    """Returns true if it fails to resolve Google's URL, False otherwise"""
     try:
         socket.gethostbyname("www.google.com")
         return False
